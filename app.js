@@ -1,7 +1,4 @@
 require("dotenv").config();
-console.log(process.env.MONGO_URI);
-
-
 
 const path = require("path");
 const express = require("express");
@@ -20,7 +17,8 @@ const {
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-mongoose.connect('mongodb://localhost:27017/blogify', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect( process.env.MONGO_URI , { useNewUrlParser: true, useUnifiedTopology: true })
+
  .then((e) => console.log("MongoDB Connected"));
 
 app.set("view engine", "ejs");
